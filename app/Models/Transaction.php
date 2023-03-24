@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Tag;
+
 
 class Transaction extends Model
 {
@@ -24,6 +26,11 @@ class Transaction extends Model
         'remark',
     ];
 
+
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 
 	/**
 	 * Generate a new UUID for the model.

@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Transaction;
 
 class Tag extends Model
 {
@@ -22,6 +23,11 @@ class Tag extends Model
         'color',
         'remark',
     ];
+
+    public function transaction(): BelongsToMany
+    {
+        return $this->belongsToMany(Transaction::class);
+    }
 
 
 	/**
